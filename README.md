@@ -26,7 +26,7 @@ npm run dev
 
 ## Clerk Setup
 
-1. Make a [Clerk](clerk.com) application
+1. Make a [Clerk](https://www.clerk.com) application
 2. Get your publishable key and expose it as `CLERK_PUBLISHABLE_KEY`
 3. Get your secret key and expose it as `CLERK_SECRET_KEY`
 4. Make a Clerk webhook
