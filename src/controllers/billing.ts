@@ -11,6 +11,7 @@ export default async function billing(server: FastifyInstance) {
     {
       schema: {
         response: BillingResponseSchema,
+        operationId: "getBilling",
       },
     },
     async (request, reply) => {

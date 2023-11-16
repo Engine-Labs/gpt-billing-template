@@ -7,6 +7,8 @@ export const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_ENDPOINT_SECRET;
 
 export const GPT_URL = process.env.GPT_URL;
 
+export const SERVER_URL = process.env.SERVER_URL || "http://localhost:8080";
+
 export const TRIAL_DAYS = process.env.TRIAL_DAYS
   ? parseInt(process.env.TRIAL_DAYS)
   : 7;

@@ -8,6 +8,7 @@ import { errorHandler } from "./controllers/common/errorHandler";
 import gpt from "./controllers/gpt";
 import billing from "./controllers/billing";
 import stripeWebhooks from "./controllers/stripeWebhooks";
+import { SERVER_URL } from "./constants";
 
 const port = parseInt(process.env.PORT || "8080");
 const host = "RENDER" in process.env ? "0.0.0.0" : "localhost";
@@ -17,6 +18,25 @@ const swaggerOptions: FastifyDynamicSwaggerOptions = {
     info: {
       title: "GPT API Template",
       version: "0.1.0",
+    },
+    servers: [
+      {
+        url: SERVER_URL,
+      },
+    ],
+    components: {
+      securitySchemes: {
+        OAuth2: {
+          type: "oauth2",
+          flows: {
+            authorizationCode: {
+              authorizationUrl: "https://example.com", // HACK: GPT actions don't seem to care about this
+              tokenUrl: "https://example.com", // HACK: GPT actions don't seem to care about this
+              scopes: {},
+            },
+          },
+        },
+      },
     },
   },
 };
