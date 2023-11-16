@@ -19,6 +19,11 @@ A starter template to write Fastify APIs for OpenAI GPTs with auth, billing and 
 
 # Getting Started
 
+```bash
+npm i
+npm run dev
+```
+
 ## Clerk Setup
 
 1. Make a Clerk application
