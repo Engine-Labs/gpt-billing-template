@@ -30,7 +30,7 @@ Run the following to create a Clerk oauth server on your production account:
 npm run clerk-oauth --create
 ```
 
-This will write the file ./clerk_oauth.json. Use these parameters in the GPT UI to create your oauth login for your GPT.
+This will write the file `./clerk_oauth.json`. Use these parameters in the GPT UI to create your oauth login for your GPT.
 
 OpenAI will then generate a callback URL for your GPT, copy this from the UI and run the following script to update
 your Clerk oauth to use it:
