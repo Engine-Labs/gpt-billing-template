@@ -2,6 +2,7 @@ export const CLERK_USER_INFO_URL = process.env.CLERK_USER_INFO_URL;
 
 export const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 export const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
+export const STRIPE_ENDPOINT_SECRET = process.env.STRIPE_ENDPOINT_SECRET;
 
 export const DBA_GPT_URL =
   process.env.DBA_GPT_URL ||

@@ -5,15 +5,16 @@
     "start": "node ./dist/server.js"
   },
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^4.12.21",
     "@clerk/fastify": "^0.6.22",
     "@fastify/swagger": "^8.12.0",
     "@fastify/swagger-ui": "^1.10.1",
     "@fastify/type-provider-typebox": "^3.5.0",
     "@prisma/client": "^5.6.0",
     "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
     "fastify": "^4.24.3",
-    "stripe": "^14.4.0",
-    "dotenv": "^16.3.1"
+    "stripe": "^14.4.0"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

@@ -1,15 +1,9 @@
 import { User } from "@prisma/client";
 import Stripe from "stripe";
-import {
-  DBA_GPT_URL,
-  STRIPE_PRICE_ID,
-  STRIPE_SECRET_KEY,
-  TRIAL_DAYS,
-} from "../constants";
+import { DBA_GPT_URL, STRIPE_PRICE_ID, TRIAL_DAYS } from "../constants";
 import prisma from "../prisma";
 import { BillingConfig } from "../types/billing";
-
-const stripe = new Stripe(STRIPE_SECRET_KEY!);
+import { stripeClient } from "../stripeClient";
 
 async function createStripeCustomer(user: User): Promise<string> {
   const params: Stripe.CustomerCreateParams = {
@@ -18,7 +12,7 @@ async function createStripeCustomer(user: User): Promise<string> {
     },
   };
 
-  const customer = await stripe.customers.create(params, {
+  const customer = await stripeClient.customers.create(params, {
     idempotencyKey: `${user.id}`,
   });
 
@@ -48,7 +42,7 @@ async function getOrCreateCheckoutSession(
 ) {
   // if there's an open checkout session already, just return it
   if (user.stripe_checkout_session_id) {
-    const checkoutSession = await stripe.checkout.sessions.retrieve(
+    const checkoutSession = await stripeClient.checkout.sessions.retrieve(
       user.stripe_checkout_session_id
     );
 
@@ -71,7 +65,7 @@ async function getOrCreateCheckoutSession(
     allow_promotion_codes: true,
   };
 
-  const checkoutSession = await stripe.checkout.sessions.create(params);
+  const checkoutSession = await stripeClient.checkout.sessions.create(params);
 
   await prisma.user.update({
     where: {
@@ -88,7 +82,7 @@ async function getOrCreateCheckoutSession(
 export async function getUserBillingConfig(user: User): Promise<BillingConfig> {
   if (user.stripe_subscription_id) {
     // paid tier - get subscription management link and return
-    const billingPortal = await stripe.billingPortal.sessions.create({
+    const billingPortal = await stripeClient.billingPortal.sessions.create({
       customer: user.stripe_customer_id!, // if stripe_subscription_id is set, then stripe_customer_id must be set
       return_url: DBA_GPT_URL,
     });

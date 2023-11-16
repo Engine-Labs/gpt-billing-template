@@ -26,6 +26,8 @@ TODO
 ## Stripe Setup
 TODO
 
+TODO: Write script to create the proper webhooks
+
 Our GPTs
 ========
 Built using this backend template.

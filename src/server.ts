@@ -7,6 +7,7 @@ import clerkWebhooks from "./controllers/clerkWebhooks";
 import { errorHandler } from "./controllers/common/errorHandler";
 import gpt from "./controllers/gpt";
 import billing from "./controllers/billing";
+import stripeWebhooks from "./controllers/stripeWebhooks";
 
 const port = parseInt(process.env.PORT || "8080");
 const host = "RENDER" in process.env ? "0.0.0.0" : "localhost";
@@ -30,6 +31,7 @@ app.setErrorHandler(errorHandler);
 
 app.register(gpt);
 app.register(clerkWebhooks);
+app.register(stripeWebhooks);
 app.register(billing);
 
 app.register(clerkPlugin);
