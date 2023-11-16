@@ -1,5 +1,3 @@
-export const CRYPTO_KEY = process.env.CRYPTO_KEY || "SAMPLE_KEY";
-export const SUPABASE_ORG_ID = process.env.SUPABASE_ORG_ID;
 export const CLERK_USER_INFO_URL = process.env.CLERK_USER_INFO_URL;
 
 export const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
@@ -12,4 +10,3 @@ export const DBA_GPT_URL =
 export const TRIAL_DAYS = process.env.TRIAL_DAYS
   ? parseInt(process.env.TRIAL_DAYS)
   : 7;
-

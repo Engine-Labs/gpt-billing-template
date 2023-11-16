@@ -3,6 +3,7 @@ import { canMakeApiCall, getUserFromToken } from "./common/auth";
 import { getUserBillingConfig } from "../actions/billing";
 
 export default async function gpt(server: FastifyInstance) {
+  // TODO: Add validation and types
   server.get("/hello-world", async (request, reply) => {
     const token = request.headers.authorization?.split(" ")[1];
     if (!token) {

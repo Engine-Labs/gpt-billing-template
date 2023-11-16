@@ -1,7 +1,8 @@
+import app from "./app";
+
 import { clerkPlugin } from "@clerk/fastify";
 import fastifySwagger, { FastifyDynamicSwaggerOptions } from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
-import app from "./app";
 import clerkWebhooks from "./controllers/clerkWebhooks";
 import { errorHandler } from "./controllers/common/errorHandler";
 import gpt from "./controllers/gpt";

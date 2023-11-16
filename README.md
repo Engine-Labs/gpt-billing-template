@@ -12,13 +12,19 @@ Features
 ========
 A starter template to write Fastify APIs for OpenAI GPTs with auth, billing and OpenAPI spec generation.
 * OAuth authentication with Clerk
-* Stripe billing 
+* Stripe billing
 * Prisma/SQLite for persistence
 * 100% TypeScript
 * Deploy wherever you like (we use Render)
 
 Getting Started
 ========
+
+## Clerk OAuth Setup
+TODO
+
+## Stripe Setup
+TODO
 
 Our GPTs
 ========
