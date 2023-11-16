@@ -5,20 +5,30 @@
   &nbsp;GPT API Template&nbsp;
 </h1>
 
-
 [![](https://dcbadge.vercel.app/api/server/mBFfcG2Q)](https://discord.gg/mBFfcG2Q)
 
-Features
-========
-A starter template to write Fastify APIs for OpenAI GPTs with auth, billing and OpenAPI spec generation.
-* OAuth authentication with Clerk
-* Stripe billing
-* Prisma/SQLite for persistence
-* 100% TypeScript
-* Deploy wherever you like (we use Render)
+# Features
 
-Getting Started
-========
+A starter template to write Fastify APIs for OpenAI GPTs with auth, billing and OpenAPI spec generation.
+
+- OAuth authentication with Clerk
+- Stripe billing
+- Prisma/SQLite for persistence
+- 100% TypeScript
+- Deploy wherever you like (we use Render)
+
+# Getting Started
+
+## Clerk Setup
+
+1. Make a Clerk application
+2. Get your publishable key and expose it as `CLERK_PUBLISHABLE_KEY`
+3. Get your secret key and expose it as `CLERK_SECRET_KEY`
+4. Make a Clerk webhook
+   1. Point it to the route `/webhooks/clerk` in this API wherever you've deployed it
+   2. Subscribe to the `user.created` event
+5. Expose the webhook signing secret as `CLERK_WEBHOOK_SECRET`
+6. Add a custom domain to your Clerk application that matches the `SERVER_URL` in your environment variables, which is where you have deployed this API
 
 ## Clerk OAuth Setup
 
@@ -26,7 +36,7 @@ The app uses Clerk to provide oauth for you GPT.
 
 Run the following to create a Clerk oauth server on your production account:
 
-``` bash
+```bash
 npm run clerk-oauth --create
 ```
 
@@ -43,15 +53,48 @@ Note you must use a production Clerk account with a custom domain, as the domain
 actions openapi spec.
 
 ## Stripe Setup
-TODO
 
-TODO: Write script to create the proper webhooks
+1. Get an API key from Stripe: https://dashboard.stripe.com/apikeys
+2. Expose it as the env variable `STRIPE_SECRET_KEY`
+3. Make a subscription product in the Stripe UI: https://dashboard.stripe.com/products/create
+4. Get the resulting price ID and expose it as `STRIPE_PRICE_ID`
+5. Make a webhook: https://dashboard.stripe.com/webhooks/create
+   1. Point it to the route `/webhooks/stripe` in this API wherever you've deployed it
+   2. Make it handle the following events:
+      - `checkout.session.completed`
+      - `customer.subscription.updated`
+      - `customer.subscription.deleted`
+6. Obtain the signing secret for your webhook and expose it as `STRIPE_WEBHOOK_SECRET`
 
-Our GPTs
-========
+By default, protected API routes will require a subscription after 7 days.
+Change this by editing `TRIAL_DAYS` in `src/constants.ts` or by setting the `TRIAL DAYS`
+environment variable.
+
+## Other Environment Variables
+
+`SERVER_URL` should point to wherever you've deployed this API,
+e.g. `https://example.com/api`.
+
+`DATABASE_URL` should point to wherever your database is.
+You will also need to update the `prisma.schema` file to use whatever database
+you have chosen, if it is not SQLite.
+
+`GPT_URL` should point to your GPT. It is used for redirection from billing pages.
+
+## GPT configuration
+
+Point your GPT actions at the route `/docs/json` wherever you have deployed this API.
+
+If you want to set `x-openai-isConsequential` for any routes, you will instead need
+to copy the JSON at `/docs/json`, manually alter it, and put the resulting spec
+into your GPT actions.
+
+# Our GPTs
+
 Built using this backend template.
 
 [Database Builder](https://chat.openai.com/g/g-A3ueeULl8-database-builder)
+
 - Create and Execute Database Migrations: I can help you create and execute database migrations to update the structure of your PostgreSQL database. This includes adding tables, modifying columns, creating indexes, and more.
 - Rollback Migrations: If a recent migration didn't go as planned, I can help you roll it back to the previous state.
 - Retrieve Current Database Schema: I can fetch and display the current schema of your database, allowing you to see the structure of your tables, columns, and relationships.

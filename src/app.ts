@@ -1,8 +1,7 @@
 import "dotenv/config";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import fastify from "fastify";
-
-const LOG_LEVEL = process.env["LOG_LEVEL"] || "info";
+import { LOG_LEVEL } from "./constants";
 
 const app = fastify({
   logger: {

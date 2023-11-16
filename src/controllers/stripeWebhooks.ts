@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { STRIPE_ENDPOINT_SECRET } from "../constants";
+import { STRIPE_WEBHOOK_SECRET } from "../constants";
 import Stripe from "stripe";
 import { stripeClient } from "../stripeClient";
 import prisma from "../prisma";
@@ -23,7 +23,7 @@ export default async function stripeWebhooks(server: FastifyInstance) {
       if (!sig) {
         return reply.code(400).send({ error: "No signature header found" });
       }
-      if (!STRIPE_ENDPOINT_SECRET) {
+      if (!STRIPE_WEBHOOK_SECRET) {
         return reply.code(400).send({ error: "Endpoint secret not set" });
       }
 
@@ -32,7 +32,7 @@ export default async function stripeWebhooks(server: FastifyInstance) {
         webhookEvent = stripeClient.webhooks.constructEvent(
           body,
           sig,
-          STRIPE_ENDPOINT_SECRET
+          STRIPE_WEBHOOK_SECRET
         );
       } catch (err) {
         return reply

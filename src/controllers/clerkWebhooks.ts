@@ -2,9 +2,9 @@ import { FastifyInstance } from "fastify";
 import { createUser } from "../actions/user";
 import { Webhook } from "svix";
 import type { WebhookEvent } from "@clerk/clerk-sdk-node";
-import { CLERK_ENDPOINT_SECRET } from "../constants";
+import { CLERK_WEBHOOK_SECRET } from "../constants";
 
-const webhook = new Webhook(CLERK_ENDPOINT_SECRET!);
+const webhook = new Webhook(CLERK_WEBHOOK_SECRET!);
 
 export default async function clerkWebhooks(server: FastifyInstance) {
   server.post(
