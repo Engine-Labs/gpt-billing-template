@@ -21,7 +21,26 @@ Getting Started
 ========
 
 ## Clerk OAuth Setup
-TODO
+
+The app uses Clerk to provide oauth for you GPT.
+
+Run the following to create a Clerk oauth server on your production account:
+
+``` bash
+npm run clerk-oauth --create
+```
+
+This will write the file ./clerk_oauth.json. Use these parameters in the GPT UI to create your oauth login for your GPT.
+
+OpenAI will then generate a callback URL for your GPT, copy this from the UI and run the following script to update
+your Clerk oauth to use it:
+
+```bash
+npm run clerk-oauth --update-callback-url https://chat.openai.com/aip/g-123/oauth/callback
+```
+
+Note you must use a production Clerk account with a custom domain, as the domain of your oauth must match that in your
+actions openapi spec.
 
 ## Stripe Setup
 TODO

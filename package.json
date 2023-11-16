@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "tsx watch ./src/server.ts -p tsconfig.json",
     "build": "npx prisma generate && tsc -p tsconfig.json",
-    "start": "node ./dist/server.js"
+    "start": "node ./dist/server.js",
+    "clerk-oauth": "ts-node ./scripts/clerk.ts"
   },
   "dependencies": {
     "@clerk/clerk-sdk-node": "^4.12.21",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@types/node": "^20.9.0",
     "prisma": "^5.6.0",
+    "ts-node": "^10.9.1",
     "tsx": "^4.1.2",
     "typescript": "^5.2.2"
   }
