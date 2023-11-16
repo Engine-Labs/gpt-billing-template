@@ -14,7 +14,8 @@
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "fastify": "^4.24.3",
-    "stripe": "^14.4.0"
+    "stripe": "^14.4.0",
+    "svix": "^1.13.0"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

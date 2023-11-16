@@ -1,4 +1,5 @@
 export const CLERK_USER_INFO_URL = process.env.CLERK_USER_INFO_URL;
+export const CLERK_ENDPOINT_SECRET = process.env.CLERK_ENDPOINT_SECRET;
 
 export const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 export const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
