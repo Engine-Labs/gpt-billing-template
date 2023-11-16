@@ -1,9 +1,24 @@
 {
+  "scripts": {
+    "dev": "tsx watch ./src/server.ts -p tsconfig.json",
+    "build": "npx prisma generate && tsc -p tsconfig.json",
+    "start": "node ./dist/server.js"
+  },
   "dependencies": {
-    "fastify": "^4.24.3"
+    "@clerk/fastify": "^0.6.22",
+    "@fastify/swagger": "^8.12.0",
+    "@fastify/swagger-ui": "^1.10.1",
+    "@fastify/type-provider-typebox": "^3.5.0",
+    "@prisma/client": "^5.6.0",
+    "axios": "^1.6.2",
+    "fastify": "^4.24.3",
+    "stripe": "^14.4.0",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",
+    "prisma": "^5.6.0",
+    "tsx": "^4.1.2",
     "typescript": "^5.2.2"
   }
 }
