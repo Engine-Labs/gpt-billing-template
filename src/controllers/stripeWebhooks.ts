@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { STRIPE_ENDPOINT_SECRET } from "../constants";
 import Stripe from "stripe";
 import { stripeClient } from "../stripeClient";
+import prisma from "../prisma";
 
 export default async function stripeWebhooks(server: FastifyInstance) {
   // TODO: Add validation and types
@@ -32,17 +33,42 @@ export default async function stripeWebhooks(server: FastifyInstance) {
         .send({ error: `Webhook verification error: ${err}` });
     }
 
+    // HACK: there should only be one user per stripe customer ID
     switch (webhookEvent.type) {
       case "customer.subscription.deleted": {
-        // TODO
+        await prisma.user.updateMany({
+          where: {
+            stripe_customer_id: webhookEvent.data.object.customer as string,
+          },
+          data: {
+            subscribed: false,
+          },
+        });
         return reply.code(204).send({});
       }
       case "customer.subscription.updated": {
-        // TODO
+        await prisma.user.updateMany({
+          where: {
+            stripe_customer_id: webhookEvent.data.object.customer as string,
+          },
+          data: {
+            subscribed: webhookEvent.data.object.status === "active",
+          },
+        });
         return reply.code(204).send({});
       }
       case "checkout.session.completed": {
-        // TODO
+        const checkoutSession = webhookEvent.data
+          .object as Stripe.Checkout.Session;
+        await prisma.user.updateMany({
+          where: {
+            stripe_checkout_session_id: checkoutSession.id,
+          },
+          data: {
+            stripe_subscription_id: checkoutSession.subscription as string,
+            subscribed: true,
+          },
+        });
         return reply.code(204).send({});
       }
       default: {
