@@ -1,6 +1,6 @@
 import { User } from "@prisma/client";
 import Stripe from "stripe";
-import { DBA_GPT_URL, STRIPE_PRICE_ID, TRIAL_DAYS } from "../constants";
+import { GPT_URL, STRIPE_PRICE_ID, TRIAL_DAYS } from "../constants";
 import prisma from "../prisma";
 import { BillingConfig } from "../types/billing";
 import { stripeClient } from "../stripeClient";
@@ -60,8 +60,8 @@ async function getOrCreateCheckoutSession(
       },
     ],
     customer: stripeCustomerId,
-    success_url: DBA_GPT_URL,
-    cancel_url: DBA_GPT_URL,
+    success_url: GPT_URL,
+    cancel_url: GPT_URL,
     allow_promotion_codes: true,
   };
 
@@ -84,7 +84,7 @@ export async function getUserBillingConfig(user: User): Promise<BillingConfig> {
     // paid tier - get subscription management link and return
     const billingPortal = await stripeClient.billingPortal.sessions.create({
       customer: user.stripe_customer_id!, // if stripe_subscription_id is set, then stripe_customer_id must be set
-      return_url: DBA_GPT_URL,
+      return_url: GPT_URL,
     });
 
     return {
