@@ -20,6 +20,7 @@ const swaggerOptions: FastifyDynamicSwaggerOptions = {
     },
   },
 };
+
 const swaggerUiOptions = {
   routePrefix: "/docs",
   exposeRoute: true,
