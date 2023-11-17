@@ -2,7 +2,7 @@
   <a href="https://sourcerer.io">
     <img src=https://www.enginelabs.ai/content/images/2023/09/Group-10.png alt="Sourcerer" width=55>
   </a>
-  &nbsp;GPT API Template&nbsp;
+  &nbsp;GPT Billing-Auth Template&nbsp;
 </h1>
 
 [![](https://dcbadge.vercel.app/api/server/mBFfcG2Q)](https://discord.gg/mBFfcG2Q)
