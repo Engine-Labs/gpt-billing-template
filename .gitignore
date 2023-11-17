@@ -2,3 +2,4 @@ node_modules
 prisma/dev.db
 .env
 dist
+clerk-oauth-app.json
