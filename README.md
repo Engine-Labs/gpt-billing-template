@@ -96,6 +96,11 @@ If you want to set `x-openai-isConsequential` for any routes, you will instead n
 to copy the JSON at `/docs/json`, manually alter it, and put the resulting spec
 into your GPT actions.
 
+Tell your GPT about the billing in your `instructions` (aka prompt), for example:
+
+> After a user signs in via OAuth, check their billing subscription status and inform
+> them about the 7-day free trial for this service and display any generated links from actions.
+
 # Our GPTs
 
 Built using this backend template.
