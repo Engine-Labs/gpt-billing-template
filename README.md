@@ -9,6 +9,8 @@
 
 **Add billing/auth to your OpenAI GPT**
 
+Get [hosted version](https://share-eu1.hsforms.com/1s6stLQg1SqqSJzRjF-xOBg2b9ek1)
+
 # Features
 
 A starter template to write Fastify APIs for OpenAI GPTs with auth, billing and OpenAPI spec generation.
