@@ -80,7 +80,7 @@ async function getOrCreateCheckoutSession(
 }
 
 export async function getUserBillingConfig(user: User): Promise<BillingConfig> {
-  if (user.stripe_subscription_id) {
+  if (user.subscribed) {
     // paid tier - get subscription management link and return
     const billingPortal = await stripeClient.billingPortal.sessions.create({
       customer: user.stripe_customer_id!, // if stripe_subscription_id is set, then stripe_customer_id must be set
