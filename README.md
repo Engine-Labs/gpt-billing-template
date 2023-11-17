@@ -7,6 +7,8 @@
 
 [![](https://dcbadge.vercel.app/api/server/mBFfcG2Q)](https://discord.gg/mBFfcG2Q)
 
+**Add billing/auth to your OpenAI GPT**
+
 # Features
 
 A starter template to write Fastify APIs for OpenAI GPTs with auth, billing and OpenAPI spec generation.
