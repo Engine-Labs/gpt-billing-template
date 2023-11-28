@@ -1,8 +1,5 @@
 <h1 style="font-weight:normal">
-  <a href="https://sourcerer.io">
-    <img src=https://www.enginelabs.ai/content/images/2023/09/Group-10.png alt="Sourcerer" width=55>
-  </a>
-  &nbsp;GPT Billing API Template&nbsp;
+  GPT Billing API Template
 </h1>
 
 [![](https://dcbadge.vercel.app/api/server/mBFfcG2Q)](https://discord.gg/wkpMV8M269)
