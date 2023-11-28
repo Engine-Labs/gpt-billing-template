@@ -5,7 +5,7 @@
   &nbsp;GPT Billing API Template&nbsp;
 </h1>
 
-[![](https://dcbadge.vercel.app/api/server/mBFfcG2Q)](https://discord.gg/mBFfcG2Q)
+[![](https://dcbadge.vercel.app/api/server/mBFfcG2Q)](https://discord.com/invite/wkpMV8M269)
 
 **Add billing/auth to your OpenAI GPT**
 
