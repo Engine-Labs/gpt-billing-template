@@ -1,10 +1,13 @@
-<h1 style="font-weight:normal">
+<h1 align="center">
+  <a href="https://enginelabs.ai" target="blank">
+    <img src="./engine.png" width="150" alt="Engine Labs Logo" />
+  </a>
+  <br>
   GPT Billing API Template
 </h1>
+<h4 align="center">Add billing/auth to your OpenAI GPT</h4>
 
 [![](https://img.shields.io/discord/1113845829741056101?logo=discord&style=flat)](https://discord.gg/QnytC3Y7Wx)
-
-**Add billing/auth to your OpenAI GPT**
 
 Get [hosted version](https://share-eu1.hsforms.com/1s6stLQg1SqqSJzRjF-xOBg2b9ek1)
 
